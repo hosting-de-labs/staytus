@@ -2,14 +2,16 @@
 // The current status of all services
 //
 .serviceList {
-  border:2px solid #bfc8d0;
-  border-radius:6px;
+  border: 1px solid #d7e2eb;
+  border-radius: 5px;
   margin-bottom: 10px;
+  background-color: #fafafa;
 }
 
 .serviceList__item {
-  padding:13px 15px;
+  padding:7px 9px;
   border-bottom:1px solid #d7e2eb;
+
   &:after {
     content: " ";
     visibility: hidden;
@@ -19,7 +21,7 @@
   }
 
   &:nth-child(even) {
-    background:#f6fbff;
+    background: #f6fbff;
   }
   &:last-child {
     border-bottom:0;
@@ -38,6 +40,7 @@
 
 .serviceList__name {
   float:left;
+  color: #333;
 }
 
 .serviceList__status {
