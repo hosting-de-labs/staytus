@@ -6,16 +6,9 @@ body {
   font-size:16px;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  background-color: $bodyBackgroundColor;
-  color: $bodyColor;
 }
+.container { max-width:700px; margin:0 auto; }
 
-a:hover {
-  color: inherit;
-}
-
-@media (min-width: 1400px) {
-  .container {
-      max-width: 1250px;
-  }
+@media (max-width: 750px) {
+  .container { padding:0 25px; }
 }

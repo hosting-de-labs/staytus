@@ -31,6 +31,7 @@
   font-size:11px;
   margin-top:-1px;
   float:left;
+
   span {
     background:#333;
     width:100%;
@@ -39,8 +40,10 @@
     border-radius: 6px;
     padding:3px 0;
     border-bottom:1px solid #ccc;
+    color: #333;
+
     &.history__itemType__issue { background:#BFC8D0; border-color:#9ba8b4; }
-    &.history__itemType__maintenance { background:#FFF7D6; border-color:#dbd3b3}
+    &.history__itemType__maintenance { background:#FFF7D6; border-color:#dbd3b3; }
   }
 }
 

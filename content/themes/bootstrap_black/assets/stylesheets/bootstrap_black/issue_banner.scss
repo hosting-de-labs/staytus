@@ -1,9 +1,18 @@
-@import 'default/variables';
+@import 'bootstrap_black/variables';
 .ongoingIssues {
   margin-bottom:15px;
+
+  .title {
+    margin-bottom: 8px;
+
+    &:after {
+      content: ':';
+    }
+  }
 }
 
 .issueBanner {
+  width: 100%;
   background:#333;
   display:block;
   border-radius:6px;
@@ -11,19 +20,37 @@
   padding:13px 17px;
   color:#fff;
   margin-bottom:15px;
+
   &:last-child {margin-bottom:0;}
+}
+
+a.issueBanner:hover {
+  text-decoration: none;
+  color: #ddd;
 }
 
 .issueBanner--investigating { background:$investigatingColor;}
 .issueBanner--identified { background:$identifiedColor;}
 .issueBanner--monitoring { background:$monitoringColor;}
-.issueBanner--maintenance { background:#fff7d6; color:#77745e;}
+.issueBanner--maintenance {
+  background:#fff7d6; 
+  color:#333;
+}
+
+a.issueBanner.issueBanner--maintenance:hover {
+  color: #666;
+}
 
 .issueBanner__state {
   float:right;
   font-weight:600;
   font-size:12px;
   margin-left:15px;
+}
+
+.issueBanner__openlink {
+  float: right;
+  font-size: 11px;
 }
 
 .issueBanner__time {

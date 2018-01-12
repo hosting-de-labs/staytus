@@ -2,14 +2,15 @@
 // The current status of all services
 //
 .serviceList {
-  border:2px solid #bfc8d0;
-  border-radius:6px;
+  border-radius: 5px;
   margin-bottom: 10px;
+  background-color: #fafafa;
 }
 
 .serviceList__item {
-  padding:13px 15px;
+  padding:7px 9px;
   border-bottom:1px solid #d7e2eb;
+
   &:after {
     content: " ";
     visibility: hidden;
@@ -19,7 +20,7 @@
   }
 
   &:nth-child(even) {
-    background:#f6fbff;
+    background: #f6fbff;
   }
   &:last-child {
     border-bottom:0;
@@ -28,7 +29,7 @@
 }
 
 .serviceList__description {
-  background: transparent image-url('default/question.svg') 0 0 / 100% auto no-repeat;
+  background: transparent image-url('bootstrap_black/question.svg') 0 0 / 100% auto no-repeat;
   display: inline-block;
   height: 14px;
   margin-left: 5px;
@@ -38,6 +39,7 @@
 
 .serviceList__name {
   float:left;
+  color: #333;
 }
 
 .serviceList__status {
