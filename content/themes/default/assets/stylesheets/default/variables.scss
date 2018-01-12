@@ -1,5 +1,12 @@
 $sansSerifFont:  'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$investigatingColor: #d13943;
-$identifiedColor: #d13980;
+
+$bodyBackgroundColor: #343a40;
+$bodyColor: #e9ecef;
+
+$investigatingColor: #c91925;
+$identifiedColor: #d18339;
 $monitoringColor: #399dd1;
 $resolvedColor: #6CBE07;
+
+$operationalColor: $resolvedColor;
+$troubleColor: #ecbb2f;

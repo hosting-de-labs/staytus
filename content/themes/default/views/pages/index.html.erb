@@ -1,64 +1,76 @@
-<% @page_title = 'Welcome' %>
+<% @page_title = 'Start' %>
 <div class='container' style='padding-top: 20px'>
-
-  <% unless @issues.empty? %>
-  <section class='ongoingIssues'>
-    <% @issues.each do |issue| %>
-    <a href='/issue/<%= issue.identifier %>' class='issueBanner issueBanner--<%= issue.state %>'>
-      <p class='issueBanner__state'><%= issue.state.humanize %></p>
-      <h2><%= issue.title %></h2>
-      <p class='issueBanner__time'><%= t("themes.default.last_updated") %> <%= time_tag issue.updated_at %></p>
-    </a>
-    <% end %>
-  </section>
-  <% end %>
-
-  <% unless @maintenances.empty? %>
-  <section class='ongoingIssues'>
-    <% @maintenances.each do |maintenance| %>
-    <a href='/maintenance/<%= maintenance.identifier %>' class='issueBanner issueBanner--maintenance'>
-      <p class='issueBanner__state'><%= t("themes.default.maintenance") %></p>
-      <h2><%= maintenance.title %></h2>
-      <% if maintenance.started? %>
-      <p class='issueBanner__time'><%= t("themes.default.due_to_finish") %> <%= distance_of_time_in_words_to_now_with_direction maintenance.finish_at %></p>
-      <% else %>
-      <p class='issueBanner__time'><%= t("themes.default.due_to_start") %> <%= distance_of_time_in_words_to_now_with_direction maintenance.start_at %></p>
-      <% end %>
-
-    </a>
-    <% end %>
-  </section>
-  <% end %>
-
-  <% for group, services in @services_with_group %>
-  <section class='serviceGroup'>
-    <% if group %>
-      <h2 class='serviceGroup__title'><%= group.name %></h2>
-    <% end %>
-    <ul class='serviceList serviceGroup__list'>
-      <% for service in services %>
-      <li class='serviceList__item'>
-        <p class='serviceList__status'><%= service_status_tag service %></p>
-        <p class='serviceList__name'>
-          <%= service.name %>
-          <% unless service.description.blank? %>
-          <span class='serviceList__description' data-tooltip="<%= service.description %>"></span>
+  <div class='row'>
+    <div class='col-md-12'>
+        <div class='headerBanner headerBanner--<%= @issues.empty? ? 'operational' : 'trouble' %>'>
+          <% if @issues.empty? %>
+          <h2><%= t("themes.default.all_services_fully_operational") %></h2>
+          <% else %>
+          <h2><%= t("themes.default.some_services_have_trouble") %></h2>
           <% end %>
-        </p>
-      </li>
+        </div>
+    </div>
+    <div class='col-md-6'>
+    <% for group, services in @services_with_group %>
+    <section class='serviceGroup'>
+      <% if group %>
+        <h2 class='serviceGroup__title'><%= group.name %></h2>
       <% end %>
-    </ul>
-  </section>
-  <% end %>
+      <ul class='serviceList serviceGroup__list'>
+        <% for service in services %>
+        <li class='serviceList__item'>
+          <p class='serviceList__status'><%= service_status_tag service %></p>
+          <p class='serviceList__name'>
+            <%= service.name %>
+            <% unless service.description.blank? %>
+            <span class='serviceList__description' data-tooltip="<%= service.description %>"></span>
+            <% end %>
+          </p>
+        </li>
+        <% end %>
+      </ul>
+    </section>
+    <% end %>
+    </div>
+    <div class='col-md-6'>
+    
+    <section class='ongoingIssues'>
+      <h1 class="title"><%= t("theme.default.current_issues") %></h1>
+      <% if @issues.empty? %>
+      <div class='headerBanner headerBanner--<%= @issues.empty? ? 'operational' : 'trouble' %>'>
+        <h2><%= t("themes.default.no_issues_right_now") %></h2>
+      </div>
+      <% end %>
+      <% unless @issues.empty? %>
+      <% @issues.each do |issue| %>
+      <a href='/issue/<%= issue.identifier %>' class='issueBanner issueBanner--<%= issue.state %>'>
+        <p class='issueBanner__state'><%= issue.state.humanize %></p>
+        <h2><%= issue.title %></h2>
+        <p class='issueBanner__openlink'><%= t("themes.default.open_issue", :default => 'more') %>...</p>
+        <p class='issueBanner__time'><%= t("themes.default.last_updated") %> <%= time_tag issue.updated_at %></p>
+      </a>
+      <% end %>
+      <% end %>
+      <div class="clearfix">
+        <a class="pushButton float-right" href='/history'><%= t("themes.default.footer.history", :default => 'History') %></a>
+      </p>
+    </section>
 
-  <% if Staytus::Config.demo? %>
-  <div class='staytusDemo'>
-    <p>
-      <b>This is a demo version of Staytus.</b> All the info on this site is fictional.
-      You can <a href='/admin'>check out the admin area</a> to see how you would
-      manage the content on this site.
-    </p>
+    <% unless @maintenances.empty? %>
+    <section class='ongoingIssues'>
+      <h1 class="title"><%= t("theme.default.scheduled_maintenances_within_next_30_days") %></h1>
+      <% @maintenances.each do |maintenance| %>
+      <a href='/maintenance/<%= maintenance.identifier %>' class='issueBanner issueBanner--maintenance'>
+        <h2><%= maintenance.title %></h2>
+        <p class='issueBanner__openlink'><%= t("themes.default.open_issue", :default => 'more') %>...</p>
+        <% if maintenance.started? %>
+        <p class='issueBanner__time'><%= t("themes.default.due_to_finish") %> <%= distance_of_time_in_words_to_now_with_direction maintenance.finish_at %></p>
+        <% else %>
+        <p class='issueBanner__time'><%= t("themes.default.due_to_start") %> <%= distance_of_time_in_words_to_now_with_direction maintenance.start_at %></p>
+        <% end %>
+      </a>
+      <% end %>
+    </section>
+    <% end %>
   </div>
-  <% end %>
-
 </div>

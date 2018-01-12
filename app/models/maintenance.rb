@@ -40,6 +40,7 @@ class Maintenance < ActiveRecord::Base
   scope :ordered, -> { order(:start_at => :asc) }
   scope :active_now, -> { where("start_at <= ?", Time.now).open }
   scope :upcoming, -> { where("start_at > ?", Time.now).open }
+  scope :within_next_30_days, -> { where("start_at < ?", (Time.now + (30 * 86400) )).open }
 
   before_validation :convert_times
   after_save :create_or_update_history_item
@@ -75,6 +76,10 @@ class Maintenance < ActiveRecord::Base
 
   def closed?
     !closed_at.nil?
+  end
+
+  def within_next_30_days?
+     self.start_at < (Time.now + 30 * 86400)
   end
 
   def open
