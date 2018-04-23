@@ -12,7 +12,7 @@ class HistoryItem < ActiveRecord::Base
 
   belongs_to :item, :polymorphic => true
 
-  scope :ordered, -> { order(:date => :desc) }
+  scope :ordered, -> { order(:date => :asc) }
 
   def month
     @month ||= Date.new(date.year, date.month)
