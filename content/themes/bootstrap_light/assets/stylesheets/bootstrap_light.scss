@@ -1,0 +1,29 @@
+//= require reset
+//= require_tree ./bootstrap_light
+@import 'bootstrap_light/variables';
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  font-family: $sansSerifFont;
+  font-size:16px;
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  background-color: $bodyBackgroundColor;
+  color: $bodyColor;
+  margin-bottom: 80px;
+}
+
+a:hover {
+  color: inherit;
+}
+
+@media (min-width: 1400px) {
+  .container {
+      max-width: 1250px;
+  }
+}

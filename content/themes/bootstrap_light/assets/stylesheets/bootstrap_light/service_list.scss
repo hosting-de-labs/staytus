@@ -1,0 +1,104 @@
+//
+// The current status of all services
+//
+.serviceList {
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin: 0;
+}
+
+.serviceList__item-wrapper {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.serviceList__item {
+  padding:7px 9px;
+  border:1px solid #d7e2eb;
+  box-sizing: border-box;
+  margin: 2px;
+  background: #fff;
+
+  &:after {
+    content: " ";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+  }
+}
+
+.serviceList__description {
+  background: transparent image-url('bootstrap_light/question.svg') 0 0 / 100% auto no-repeat;
+  display: inline-block;
+  height: 14px;
+  margin-left: 5px;
+  vertical-align: -1px;
+  width: 14px;
+}
+
+.serviceList__name {
+  float:left;
+  color: #333;
+  width: 90%;
+  height: 23px;
+  overflow: hidden;
+}
+
+.serviceList__status {
+  float:right;
+  width: 20px;
+  height: 20px;
+
+  .serviceStatusTag {
+    visibility: hidden;
+
+    &:before{
+      visibility: visible;
+      font-family: "Font Awesome\ 5 Free";
+      font-weight: 900;
+    }
+
+    &.serviceStatusTag--ok:before {
+      content: "\f00c"
+    }
+
+    &.serviceStatusTag--minor:before {
+      content: "\f071"
+    }
+
+    &.serviceStatusTag--major:before {
+      content: "\f12a"
+    }
+
+    &.serviceStatusTag--maintenance:before {
+      content: "\f0ad"
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .serviceList__description { display:none; }
+}
+
+@media (max-width: 470px) {
+  .serviceList {
+    font-size:14px;
+    border-width:1px;
+  }
+}
+
+
+@media (max-width: 320px) {
+  .serviceList__item {
+    text-align: center;
+  }
+  .serviceList__name {
+    margin-bottom:5px;
+  }
+  .serviceList__name,
+  .serviceList__status {
+    float:none;
+  }
+}

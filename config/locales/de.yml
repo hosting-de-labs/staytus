@@ -1,4 +1,10 @@
-en:
+de:
+  datetime:
+    distance_in_words:
+      x_days:
+        one:   "einem Tag"
+        other: "%{count} Tagen"
+
   issue:
     affected_services: Betroffen
     scheduled_for: Beginn
@@ -8,6 +14,7 @@ en:
     posted: Erstellt
     opened_on: Geöffnet am
     last_updated: zuletzt aktualisiert
+    status: Status
 
   maintenance_statuses:
     active: In Bearbeitung
