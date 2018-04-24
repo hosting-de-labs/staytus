@@ -1,0 +1,73 @@
+<% @page_title = 'Start' %>
+<div class='container' style='padding-top: 20px'>
+  <div class='row'>
+    <% unless @issues.empty? %>
+    <div class='col-md-12'>
+      <section class='ongoingIssues'>
+        <h1 class="title"><%= t("theme.default.current_issues") %></h1>
+        <% @issues.each do |issue| %>
+        <a href='/issue/<%= issue.identifier %>' class='issueBanner issueBanner--<%= issue.state %>'>
+          <p class='issueBanner__state'><%= issue.state.humanize %></p>
+          <h2><%= issue.title %></h2>
+          <p class='issueBanner__openlink'><%= t("themes.bootstrap_light.open_issue", :default => 'more') %>...</p>
+          <p class='issueBanner__time'><%= t("themes.bootstrap_light.last_updated") %> <%= time_tag issue.updated_at %></p>
+        </a>
+        <% end %>
+        <div class="clearfix">
+          <a class="pushButton float-right" href='/history'><%= t("themes.bootstrap_light.footer.history", :default => 'History') %></a>
+        </p>
+      </section>
+    </div>
+    <% else %>
+    <div class='col-md-12'>
+      <div class='headerBanner headerBanner--operational'>
+        <h2><%= t("themes.bootstrap_light.no_issues_right_now") %><h2>
+      </div>
+    </div>
+    <% end %>
+
+    <div class='col-md-12'>
+      <% for group, services in @services_with_group %>
+      <section class='serviceGroup'>
+        <% if group %>
+          <h2 class='serviceGroup__title'><%= group.name %></h2>
+        <% end %>
+        <div class='row serviceList serviceGroup__list'>
+          <% for service in services %>
+          <div class='col-md-4 serviceList__item-wrapper'>
+            <div class="serviceList__item">
+              <p class='serviceList__status'><%= service_status_tag(service, :no_text => true) %></p>
+              <p class='serviceList__name'>
+                <%= service.name %>
+                <% unless service.description.blank? %>
+                <span class='serviceList__description' data-tooltip="<%= service.description %>"></span>
+                <% end %>
+              </p>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </section>
+      <% end %>
+    </div>
+
+    <% unless @maintenances.empty? %>
+    <div class='col-md-12'>
+      <section class='ongoingIssues'>
+        <h1 class="title"><%= t("themes.bootstrap_light.scheduled_maintenances_within_next_30_days") %></h1>
+        <% @maintenances.each do |maintenance| %>
+        <a href='/maintenance/<%= maintenance.identifier %>' class='issueBanner issueBanner--maintenance'>
+          <h2><%= maintenance.title %></h2>
+          <p class='issueBanner__openlink'><%= t("themes.bootstrap_light.open_issue") %>...</p>
+          <% if maintenance.started? %>
+          <p class='issueBanner__time'><%= t("themes.bootstrap_light.estimate_finish_in") %> <%= distance_of_time_in_words_to_now_with_direction maintenance.finish_at %></p>
+          <% else %>
+          <p class='issueBanner__time'><%= t("themes.bootstrap_light.estimate_start_in") %> <%= distance_of_time_in_words_to_now_with_direction maintenance.start_at %></p>
+          <% end %>
+        </a>
+        <% end %>
+      </section>
+    </div>
+    <% end %>
+  </div>
+</div>

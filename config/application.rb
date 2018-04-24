@@ -16,6 +16,8 @@ module Staytus
       g.javascripts     false
       g.helper          false
     end
-    config.i18n.load_path += Dir[Rails.root.join('content', 'locales', '*.{rb,yml}').to_s]
+
+    config.i18n.load_path += Dir[Rails.root.join('content', 'themes', ENV['STAYTUS_THEME'], 'locales', '*.{rb,yml}').to_s]
+    config.i18n.default_locale = :de
   end
 end

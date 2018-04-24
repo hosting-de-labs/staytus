@@ -1,0 +1,21 @@
+//= require reset
+//= require_tree ./bootstrap_black
+@import 'bootstrap_black/variables';
+body {
+  font-family: $sansSerifFont;
+  font-size:16px;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  background-color: $bodyBackgroundColor;
+  color: $bodyColor;
+}
+
+a:hover {
+  color: inherit;
+}
+
+@media (min-width: 1400px) {
+  .container {
+      max-width: 1250px;
+  }
+}

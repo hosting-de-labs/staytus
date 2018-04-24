@@ -29,5 +29,8 @@ gem 'rack-custom-proxies'
 gem 'log_logins'
 
 group :development, :test do
+  gem 'solargraph'
+  gem 'guard-livereload', '~> 2.5'
+  gem 'rack-livereload'
   gem 'annotate', '~> 2.6.5'
 end

@@ -1,0 +1,14 @@
+.serviceGroup {
+  margin-bottom:25px;
+}
+
+.serviceGroup__title {
+  margin-bottom:8px;
+  font-size:17px;
+  font-weight: lighter;
+
+  &:after {
+	content: ':';
+  }
+}
+

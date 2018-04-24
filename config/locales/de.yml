@@ -1,15 +1,31 @@
-en:
-  banana: asd
+de:
+  datetime:
+    distance_in_words:
+      x_days:
+        one:   "einem Tag"
+        other: "%{count} Tagen"
+
+  issue:
+    affected_services: Betroffen
+    scheduled_for: Beginn
+    description: Beschreibung
+    duration: Dauer
+    updates: Aktualisierungen
+    posted: Erstellt
+    opened_on: Geöffnet am
+    last_updated: zuletzt aktualisiert
+    status: Status
+
   maintenance_statuses:
-    active: In Progress
-    closed: Finished
-    upcoming: Upcoming
+    active: In Bearbeitung
+    closed: Abgeschlossen
+    upcoming: Bevorstehend
 
   service_status_types:
-    ok: OK - everything is working as it should be
-    minor: Minor Issue - there are some issues but not affecting the whole service
-    major: Major Issues - a complete service outage affecting all users
-    maintenance: Maintenance - the service is currently undergoing planned maintenance
+    ok: OK - Alle Systeme laufen einwandfrei
+    minor: Eingeschränkt - es kommt derzeit zu Fehlern, welche jedoch nicht den gesamten Service betreffen
+    major: Ausfall - der Service ist derzeit nicht erreichbar
+    maintenance: Wartung - es werden aktuell geplante Wartungsarbeiten durchgeführt
 
   email_templates:
     subscribed:
