@@ -1,4 +1,4 @@
-<% @page_title = "#{@issue.title} - #{@issue.created_at.strftime("%d/%m/%Y")}" %>
+<% @page_title = "#{@issue.title} - #{@issue.created_at.strftime(t("time.formats.long"))}" %>
 <%= render 'page_header' %>
 
 <section class='issueDetail'>
@@ -26,8 +26,8 @@
         <%= update.text %>
       </p>
       <p class='issueUpdates__meta'>
-        <%= t("issue.posted") %>: <%= time_tag update.created_at%>
-        <% if update.user %>by <%= update.user.name %><% end %>
+        <%= t("issue.posted") %> <%= time_tag update.created_at%>
+        <% if update.user %><%= t("issue.posted_by")%> <%= update.user.name %><% end %>
       </p>
     </div>
     <% end %>

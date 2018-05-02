@@ -4,6 +4,7 @@ de:
   themes:
     bootstrap_light:
       no_issues_right_now: Alle Dienste laufen einwandfrei.
+      current_issues: Aktuelle Probleme
       scheduled_maintenances_within_next_30_days: Geplante Wartungen innerhalb der nächsten 30 Tage
       estimate_start_in: "Beginnt"
       estimate_finish_in: "Endet"

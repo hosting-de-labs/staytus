@@ -1,4 +1,4 @@
-<% @page_title = "#{@maintenance.title} - #{@maintenance.start_at.strftime("%d/%m/%Y")}" %>
+<% @page_title = "#{@maintenance.title} - #{@maintenance.start_at.strftime(t("time.formats.long"))}" %>
 <%= render 'page_header' %>
 
 <section class='issueDetail'>
@@ -15,15 +15,15 @@
   <% end %>
 
   <h1 class='issueDetail__title'><%= @maintenance.title %></h1>
-  <p class='issueDetail__date'><%= t("issue.scheduled_for") %>: <%= @maintenance.start_at.strftime("%d.%m.%Y, %H:%M Uhr") %></p>
+  <p class='issueDetail__date'><%= t("issue.scheduled_for") %> <%= @maintenance.start_at.strftime(t("time.formats.long")) %></p>
   <p class='issueDetail__descriptionTitle'><%= t("issue.description") %></p>
   <p class='issueDetail__description'><%= @maintenance.description %></p>
 
   <dl class='issueDetail__details'>
   <dt><%= t("issue.scheduled_for") %></dt>
-    <dd><%= @maintenance.start_at.strftime("%d.%m.%Y, %H:%M Uhr") %></dd>
+    <dd><%= @maintenance.start_at.strftime(t("time.formats.long")) %></dd>
     <dt><%= t("issue.duration") %></dt>
-    <dd><%= @maintenance.length_in_minutes_as_string %></dd>
+    <dd><%= @maintenance.finish_at.strftime(t("time.formats.long")) %></dd>
     <dt><%= t("issue.status") %></dt>
     <dd><%= maintenance_status_tag @maintenance.status %></dd>
 

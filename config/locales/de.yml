@@ -1,19 +1,27 @@
 de:
+  time:
+    formats:
+      long: "%d.%m.%Y, %H:%M Uhr"
+
   datetime:
     distance_in_words:
       x_days:
         one:   "einem Tag"
         other: "%{count} Tagen"
+      about_x_hours:
+        one:   "einer Stunde"
+        other: "%{count} Stunden"
 
   issue:
     affected_services: Betroffen
-    scheduled_for: Beginn
+    scheduled_for: Beginnt am
     description: Beschreibung
-    duration: Dauer
+    duration: Geplantes Ende
     updates: Aktualisierungen
-    posted: Erstellt
+    posted: Erstellt am
+    posted_by: von
     opened_on: Geöffnet am
-    last_updated: zuletzt aktualisiert
+    last_updated: Zuletzt aktualisiert am
     status: Status
 
   maintenance_statuses:
