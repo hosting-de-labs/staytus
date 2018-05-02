@@ -29,7 +29,18 @@
 .issueDetail__details {
   line-height:24px;
   margin-bottom:40px;
-  dt { font-weight:700; margin-bottom:15px; float:left; width:40%;}
+  dt {
+    font-weight:700;
+    margin-bottom:15px;
+    float:left;
+    width:40%;
+
+    &:after {
+      content: ':';
+    }
+  }
+
+
   dd { margin-bottom:15px; }
   dd:last-child { margin-bottom:0; }
 }
